@@ -5,56 +5,22 @@ const ArticleButton = ({ article, setIsVoteError, setArticle }) => {
   const [isLikeClicked, setIsLikeClicked] = useState(false);
   const [isDislikeClicked, setIsDislikeClicked] = useState(false);
 
-  const addLike = (article, num) => {
+  const changeLike = (article, num, button) => {
     const copyArticle = { ...article };
-    copyArticle.votes++;
+    if (num === 1) {
+      copyArticle.votes++;
+    } else {
+      copyArticle.votes--;
+    }
     setArticle(copyArticle);
     setIsVoteError(null);
     patchArticleVotes(article.article_id, num)
       .then(() => {
-        setIsLikeClicked(true);
-      })
-      .catch((error) => {
-        setIsVoteError("Something went wrong. Please try again");
-      });
-  };
-
-  const removeAddedLike = (article, num) => {
-    const copyArticle = { ...article };
-    copyArticle.votes--;
-    setArticle(copyArticle);
-    setIsVoteError(null);
-    patchArticleVotes(article.article_id, num)
-      .then(() => {
-        setIsLikeClicked(false);
-      })
-      .catch((error) => {
-        setIsVoteError("Something went wrong. Please try again");
-      });
-  };
-
-  const takeLike = (article, num) => {
-    const copyArticle = { ...article };
-    copyArticle.votes--;
-    setArticle(copyArticle);
-    setIsVoteError(null);
-    patchArticleVotes(article.article_id, num)
-      .then(() => {
-        setIsDislikeClicked(true);
-      })
-      .catch((error) => {
-        setIsVoteError("Something went wrong. Please try again");
-      });
-  };
-
-  const removeTakenLike = (article, num) => {
-    const copyArticle = { ...article };
-    copyArticle.votes++;
-    setArticle(copyArticle);
-    setIsVoteError(null);
-    patchArticleVotes(article.article_id, num)
-      .then(() => {
-        setIsDislikeClicked(false);
+        if (button === "like") {
+          setIsLikeClicked(!isLikeClicked);
+        } else {
+          setIsDislikeClicked(!isDislikeClicked);
+        }
       })
       .catch((error) => {
         setIsVoteError("Something went wrong. Please try again");
@@ -68,9 +34,9 @@ const ArticleButton = ({ article, setIsVoteError, setArticle }) => {
         className={isLikeClicked ? "clicked-like" : null}
         onClick={() => {
           if (isLikeClicked) {
-            removeAddedLike(article, -1);
+            changeLike(article, -1, "like");
           } else {
-            addLike(article, 1);
+            changeLike(article, 1, "like");
           }
         }}
       >
@@ -81,9 +47,9 @@ const ArticleButton = ({ article, setIsVoteError, setArticle }) => {
         disabled={isLikeClicked}
         onClick={() => {
           if (isDislikeClicked) {
-            removeTakenLike(article, 1);
+            changeLike(article, 1, "dislike");
           } else {
-            takeLike(article, -1);
+            changeLike(article, -1, "dislike");
           }
         }}
       >

@@ -36,8 +36,8 @@ nav ul {
   max-width: 400px;
 }
 
-.article:hover {
-  background-color: lightblue;
+.article-title:hover {
+  color: purple;
 }
 
 .article-info {
@@ -125,16 +125,16 @@ nav ul {
   }
 
   .articles-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   }
 
   .article {
-    flex-grow: 1;
+    justify-content: flex-end;
   }
 
   .article-title {
+    align-self: center;
     max-width: fit-content;
   }
   .article-info {
@@ -161,11 +161,8 @@ nav ul {
   }
 
   .comments {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   }
 
-  .comment {
-    flex: 1 1 30%;
-  }
 }
