@@ -37,7 +37,7 @@ nav ul {
 }
 
 .article:hover {
-  background-color: green;
+  background-color: lightblue;
 }
 
 .article-info {
@@ -108,6 +108,15 @@ nav ul {
 
 .comment-info {
   grid-area: 2/2/3/3;
+  align-self: center;
+}
+
+.clicked-like {
+  background-color: green;
+}
+
+.clicked-dislike {
+  background-color: red;
 }
 
 @media only screen and (min-width: 600px) {

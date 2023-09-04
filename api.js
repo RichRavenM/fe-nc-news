@@ -23,3 +23,10 @@ export const getCommentByArticleById = (id) => {
       return response.data.comments;
     });
 };
+
+export const patchArticleVotes = (id, num) => {
+  return axios.patch(
+    `https://nc-news-api-rich.onrender.com/api/articles/${id}`,
+    { inc_votes: num }
+  );
+};
