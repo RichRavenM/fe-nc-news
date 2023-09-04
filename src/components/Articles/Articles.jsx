@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getArticles } from "../../../api";
 
 const Articles = () => {
@@ -6,6 +7,11 @@ const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  const navigate = useNavigate();
+  const navigateToArticle = (id) => {
+    navigate(`/articles/${id}`);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,7 +37,13 @@ const Articles = () => {
       <ul className="articles-container">
         {articles.map((article) => {
           return (
-            <li key={article.article_id} className="article">
+            <li
+              key={article.article_id}
+              className="article"
+              onClick={() => {
+                navigateToArticle(article.article_id);
+              }}
+            >
               <h2 className="article-title">{article.title}</h2>
               <h4>
                 {article.topic.slice(0, 1).toUpperCase() +
