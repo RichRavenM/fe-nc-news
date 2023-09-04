@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getArticles } from "../../../api";
+import ArticleButton from "./ArticleButton";
 
 const Articles = () => {
   const [total, setTotal] = useState(0);
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isVoteError, setIsVoteError] = useState(null);
 
   const navigate = useNavigate();
   const navigateToArticle = (id) => {
@@ -38,11 +40,11 @@ const Articles = () => {
         {articles.map((article) => {
           return (
             <li
-              key={article.article_id}
-              className="article"
               onClick={() => {
                 navigateToArticle(article.article_id);
               }}
+              key={article.article_id}
+              className="article"
             >
               <h2 className="article-title">{article.title}</h2>
               <h4>
