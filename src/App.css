@@ -58,7 +58,25 @@ nav ul {
   border: 1px solid black;
 }
 
+.single-article {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-article-title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.article-bulk {
+  text-align: left;
+}
+
 @media only screen and (min-width: 600px) {
+  #root {
+    font-size: 20px;
+  }
+
   .articles-container {
     display: flex;
     flex-wrap: wrap;

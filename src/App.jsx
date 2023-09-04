@@ -4,6 +4,7 @@ import Header from "./components/universal/Header";
 import Nav from "./components/universal/Nav";
 import Home from "./components/Home";
 import Articles from "./components/Articles/Articles";
+import SingleArticle from "./components/Articles/SingleArticle";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path='/articles' element={<Articles/>}></Route>
+        <Route path="/articles" element={<Articles />}></Route>
+        <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
       </Routes>
     </div>
   );
