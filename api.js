@@ -23,19 +23,19 @@ export const getArticleById = (id) => {
     });
 };
 
+export const patchArticleVotes = (id, num) => {
+  return axios.patch(
+    `https://nc-news-api-rich.onrender.com/api/articles/${id}`,
+    { inc_votes: num }
+  );
+};
+
 export const getCommentByArticleById = (id) => {
   return axios
     .get(`https://nc-news-api-rich.onrender.com/api/articles/${id}/comments`)
     .then((response) => {
       return response.data.comments;
     });
-};
-
-export const patchArticleVotes = (id, num) => {
-  return axios.patch(
-    `https://nc-news-api-rich.onrender.com/api/articles/${id}`,
-    { inc_votes: num }
-  );
 };
 
 export const postCommentByArticleId = (id, user, body) => {
@@ -47,6 +47,12 @@ export const postCommentByArticleId = (id, user, body) => {
     .then((response) => {
       return response.data.comment;
     });
+};
+
+export const deleteCommentById = (id) => {
+  return axios.delete(
+    `https://nc-news-api-rich.onrender.com/api/comments/${id}`
+  );
 };
 
 export const getTopics = () => {

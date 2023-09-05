@@ -31,7 +31,7 @@ const MakeComment = ({ article_id, comments, setComments }) => {
     setIsSubmitError(false);
     const currentDate = new Date().toJSON().slice(0, 10);
     const newComment = {
-      comment_id: 1000,
+      comment_id: Math.round(Math.random() * 1000000),
       author: user,
       body: formInput,
       created_at: currentDate,
