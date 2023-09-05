@@ -8,6 +8,8 @@ const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isDeleteError, setIsDeleteError] = useState(false);
+  const [commentById, setCommentById] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,8 +26,10 @@ const Comments = ({ article_id }) => {
   }, []);
 
   const handleDelete = (comment) => {
-    const isConfirmed = confirm("Are you sure you want to delete this item ?");
+    const isConfirmed = confirm("Are you sure you want to delete this item?");
     if (isConfirmed) {
+      setCommentById(null);
+      setIsDeleteError(false);
       const copyComments = [...comments];
       setComments((currComments) => {
         const filteredComments = currComments.filter(
@@ -35,9 +39,9 @@ const Comments = ({ article_id }) => {
       });
       alert("Comment deleted");
       deleteCommentById(comment.comment_id).catch((err) => {
-        if (err.response.status !== 404) {
-          setComments(copyComments);
-        }
+        setCommentById(comment.comment_id);
+        setIsDeleteError(true);
+        setComments(copyComments);
       });
     }
   };
@@ -75,6 +79,11 @@ const Comments = ({ article_id }) => {
                 >
                   Delete Comment
                 </button>
+                {isDeleteError && commentById === comment.comment_id ? (
+                  <p className="comment-delete-error">
+                    Please refesh the page and try again
+                  </p>
+                ) : null}
               </div>
             </li>
           );

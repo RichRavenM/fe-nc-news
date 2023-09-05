@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Articles from "./components/Articles/Articles";
 import SingleArticle from "./components/Articles/SingleArticle/SingleArticle";
 import Topics from "./components/Topics";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/articles" element={<Articles />}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
         <Route path="/topics" element={<Topics />}></Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

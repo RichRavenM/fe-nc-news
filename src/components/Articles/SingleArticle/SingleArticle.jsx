@@ -25,7 +25,17 @@ const SingleArticle = () => {
   }, []);
 
   if (isLoading) return <h1>Loading...</h1>;
-  if (isError) return <h1>Error. Please try again with valid article id</h1>;
+  if (isError)
+    return (
+      <>
+        <h2>Error. Please try again with valid article id</h2>
+        <img
+          className="error-bot"
+          src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGpkanIxNTNkOGp2emF6bWE4ejFwcTFldHBxZ3RkZXduZGUzNnJ1dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lRSeZ2ddNwhZ5AgIvk/giphy.gif"
+          alt="A sad face"
+        ></img>
+      </>
+    );
   return (
     <section className="single-article">
       <section className="article-to-show">
