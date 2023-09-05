@@ -50,11 +50,16 @@ const Filters = ({ copyParams, sortByTopic, setSearchParams }) => {
       >
         Show filters
       </button>
-      <form hidden={isHidden} onSubmit={handleSubmit}>
+      <form className="filter-form" hidden={isHidden} onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="sort_by">
+          <label className="filter-label" htmlFor="sort_by">
             Sort by
-            <select id="sort_by" value={sortBy} onChange={handleSortChange}>
+            <select
+              className="filter-select"
+              id="sort_by"
+              value={sortBy}
+              onChange={handleSortChange}
+            >
               <option value="" selected disabled hidden>
                 Choose here
               </option>
@@ -66,9 +71,14 @@ const Filters = ({ copyParams, sortByTopic, setSearchParams }) => {
           </label>
         </div>
         <div>
-          <label htmlFor="order">
+          <label className="filter-label" htmlFor="order">
             Order
-            <select id="order" value={order} onChange={handleOrderChange}>
+            <select
+              className="filter-select"
+              id="order"
+              value={order}
+              onChange={handleOrderChange}
+            >
               <option value="" selected disabled hidden>
                 Choose here
               </option>
