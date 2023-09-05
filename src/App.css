@@ -60,6 +60,10 @@ nav ul {
   justify-self: center;
 }
 
+.error-bot {
+  width: 100%;
+}
+
 .creation-facts {
   grid-column: 1/2;
   border: 1px solid black;
