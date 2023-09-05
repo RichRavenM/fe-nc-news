@@ -34,9 +34,14 @@ nav ul {
   margin-bottom: 0px;
   align-self: center;
   max-width: 400px;
+  color: #213547;
 }
 
 .article-title:hover {
+  color: purple;
+}
+
+.article-topic:hover {
   color: purple;
 }
 
@@ -139,9 +144,34 @@ nav ul {
   border: 10px solid green;
 }
 
+.link {
+  color: rgba(255, 255, 255, 0.87);
+}
+
 #comment-form-input.comment-form-valid {
   border: 10px solid green;
   outline: none;
+}
+
+.topics-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.topic-ele {
+  border: 1px solid black;
+}
+
+.topic-description {
+  font-style: italic;
+}
+
+.topic-slug {
+  color: #213547;
+}
+
+.topic-slug:hover {
+  color: purple;
 }
 
 @media only screen and (min-width: 600px) {
