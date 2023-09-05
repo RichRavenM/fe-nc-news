@@ -96,7 +96,7 @@ nav ul {
 .comment {
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto auto;
   border: 1px solid black;
   margin-bottom: 20px;
   margin: 10px;
@@ -234,5 +234,14 @@ nav ul {
   .comments {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  }
+
+  .delete-button-container {
+    grid-column: 1/3;
+    grid-row: 3/4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
