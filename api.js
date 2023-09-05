@@ -1,11 +1,13 @@
 import axios from "axios";
 
-export const getArticles = (sortByTopic) => {
+export const getArticles = (sortByTopic, sortByX, sortByOrder) => {
   return axios
     .get("https://nc-news-api-rich.onrender.com/api/articles", {
       params: {
         total_count: "1",
         topic: sortByTopic,
+        sort_by: sortByX,
+        order: sortByOrder,
       },
     })
     .then((response) => {

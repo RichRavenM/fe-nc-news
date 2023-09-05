@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getArticles } from "../../../api";
 import { Link, useSearchParams } from "react-router-dom";
+import Filters from "./Filters";
 
 const Articles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -9,11 +10,14 @@ const Articles = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isVoteError, setIsVoteError] = useState(null);
+  const copyParams = { ...searchParams };
+  const sortByTopic = searchParams.get("topic");
 
   useEffect(() => {
-    const sortByTopic = searchParams.get("topic");
+    const sortByX = searchParams.get("sort_by");
+    const sortByOrder = searchParams.get("order");
     setIsLoading(true);
-    getArticles(sortByTopic)
+    getArticles(sortByTopic, sortByX, sortByOrder)
       .then(({ articles, total_count }) => {
         setArticles(articles);
         setTotal(total_count);
@@ -31,6 +35,11 @@ const Articles = () => {
 
   return (
     <>
+      <Filters
+        copyParams={copyParams}
+        sortByTopic={sortByTopic}
+        setSearchParams={setSearchParams}
+      />
       <h3>Total articles: {total}</h3>
       <ul className="articles-container">
         {articles.map((article) => {
