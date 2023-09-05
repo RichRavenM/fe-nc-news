@@ -46,7 +46,7 @@ const Articles = () => {
           return (
             <li key={article.article_id} className="article link">
               <Link
-                to={`${location.pathname}?${article.article_id}`}
+                to={`${location.pathname}/${article.article_id}`}
                 className="article-title"
               >
                 <h2>{article.title}</h2>
