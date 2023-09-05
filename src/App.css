@@ -119,6 +119,31 @@ nav ul {
   background-color: red;
 }
 
+#comment-form-input {
+  width: 95%;
+  height: 200px;
+  font-size: 1.5em;
+  resize: none;
+}
+
+#comment-form-input.comment-form-invalid {
+  border: 10px solid red;
+}
+
+#comment-form-input.comment-form-invalid:focus {
+  border: 10px solid red;
+  outline: none;
+}
+
+#comment-form-input.comment-form-valid {
+  border: 10px solid green;
+}
+
+#comment-form-input.comment-form-valid {
+  border: 10px solid green;
+  outline: none;
+}
+
 @media only screen and (min-width: 600px) {
   #root {
     font-size: 20px;
@@ -164,5 +189,4 @@ nav ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   }
-
 }

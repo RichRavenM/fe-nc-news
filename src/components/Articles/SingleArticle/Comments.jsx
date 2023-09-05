@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCommentByArticleById } from "../../../../api";
+import MakeComment from "./MakeComment";
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -24,6 +25,11 @@ const Comments = ({ article_id }) => {
 
   return (
     <>
+      <MakeComment
+        article_id={article_id}
+        comments={comments}
+        setComments={setComments}
+      />
       <h2>Comments</h2>
       <ul className="comments">
         {comments.map((comment) => {
