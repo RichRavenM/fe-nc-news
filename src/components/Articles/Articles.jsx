@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { getArticles } from "../../../api";
 import { Link, useSearchParams } from "react-router-dom";
 
@@ -11,14 +10,8 @@ const Articles = () => {
   const [isError, setIsError] = useState(false);
   const [isVoteError, setIsVoteError] = useState(null);
 
-  const sortByTopic = searchParams.get("topic");
-
-  const navigate = useNavigate();
-  const navigateToArticle = (id) => {
-    navigate(`/articles/${id}`);
-  };
-
   useEffect(() => {
+    const sortByTopic = searchParams.get("topic");
     setIsLoading(true);
     getArticles(sortByTopic)
       .then(({ articles, total_count }) => {
@@ -31,7 +24,7 @@ const Articles = () => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, []);
+  }, [searchParams]);
 
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error. Please try again</h1>;
@@ -44,13 +37,20 @@ const Articles = () => {
           return (
             <li key={article.article_id} className="article link">
               <Link
-                to={`/articles/${article.article_id}`}
+                to={`${location.pathname}?${article.article_id}`}
                 className="article-title"
               >
                 <h2>{article.title}</h2>
               </Link>
               <Link to={`/articles?topic=${article.topic}`}>
-                <h4 className="article-topic link">
+                <h4
+                  className="article-topic link"
+                  onClick={() => {
+                    setSearchParams((currParams) => {
+                      return { ...currParams, topic: article.topic };
+                    });
+                  }}
+                >
                   {article.topic.slice(0, 1).toUpperCase() +
                     article.topic.slice(1)}
                 </h4>
