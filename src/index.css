@@ -64,6 +64,9 @@ button:focus-visible {
     color: #213547;
   }
 
+  .comment-body {
+    background-color: lightgray;
+  }
 
   a:hover {
     color: #747bff;

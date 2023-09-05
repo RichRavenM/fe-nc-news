@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { getArticles } from "../../../api";
 import { Link, useSearchParams } from "react-router-dom";
+import Filters from "./Filters";
 
 const Articles = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -10,17 +10,14 @@ const Articles = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isVoteError, setIsVoteError] = useState(null);
-
+  const copyParams = { ...searchParams };
   const sortByTopic = searchParams.get("topic");
 
-  const navigate = useNavigate();
-  const navigateToArticle = (id) => {
-    navigate(`/articles/${id}`);
-  };
-
   useEffect(() => {
+    const sortByX = searchParams.get("sort_by");
+    const sortByOrder = searchParams.get("order");
     setIsLoading(true);
-    getArticles(sortByTopic)
+    getArticles(sortByTopic, sortByX, sortByOrder)
       .then(({ articles, total_count }) => {
         setArticles(articles);
         setTotal(total_count);
@@ -31,26 +28,38 @@ const Articles = () => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, []);
+  }, [searchParams]);
 
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error. Please try again</h1>;
 
   return (
     <>
+      <Filters
+        copyParams={copyParams}
+        sortByTopic={sortByTopic}
+        setSearchParams={setSearchParams}
+      />
       <h3>Total articles: {total}</h3>
       <ul className="articles-container">
         {articles.map((article) => {
           return (
             <li key={article.article_id} className="article link">
               <Link
-                to={`/articles/${article.article_id}`}
+                to={`${location.pathname}?${article.article_id}`}
                 className="article-title"
               >
                 <h2>{article.title}</h2>
               </Link>
               <Link to={`/articles?topic=${article.topic}`}>
-                <h4 className="article-topic link">
+                <h4
+                  className="article-topic link"
+                  onClick={() => {
+                    setSearchParams((currParams) => {
+                      return { ...currParams, topic: article.topic };
+                    });
+                  }}
+                >
                   {article.topic.slice(0, 1).toUpperCase() +
                     article.topic.slice(1)}
                 </h4>

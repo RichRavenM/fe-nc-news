@@ -11,7 +11,9 @@ const Nav = () => {
         <li>
           <Link to="/articles">Articles</Link>
         </li>
-        <li>Placeholder</li>
+        <li>
+          <Link to="/topics">Article Topics</Link>
+        </li>
       </ul>
     </nav>
   );
