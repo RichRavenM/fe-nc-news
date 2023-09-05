@@ -48,7 +48,7 @@ const Filters = ({ copyParams, sortByTopic, setSearchParams }) => {
           setisHidden(!isHidden);
         }}
       >
-        Show filters
+        {isHidden ? 'Show filters': 'Hide filters'}
       </button>
       <form className="filter-form" hidden={isHidden} onSubmit={handleSubmit}>
         <div>
