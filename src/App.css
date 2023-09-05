@@ -36,8 +36,8 @@ nav ul {
   max-width: 400px;
 }
 
-.article:hover {
-  background-color: lightblue;
+.article-title:hover {
+  color: purple;
 }
 
 .article-info {
@@ -119,22 +119,47 @@ nav ul {
   background-color: red;
 }
 
+#comment-form-input {
+  width: 95%;
+  height: 200px;
+  font-size: 1.5em;
+  resize: none;
+}
+
+#comment-form-input.comment-form-invalid {
+  border: 10px solid red;
+}
+
+#comment-form-input.comment-form-invalid:focus {
+  border: 10px solid red;
+  outline: none;
+}
+
+#comment-form-input.comment-form-valid {
+  border: 10px solid green;
+}
+
+#comment-form-input.comment-form-valid {
+  border: 10px solid green;
+  outline: none;
+}
+
 @media only screen and (min-width: 600px) {
   #root {
     font-size: 20px;
   }
 
   .articles-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   }
 
   .article {
-    flex-grow: 1;
+    justify-content: flex-end;
   }
 
   .article-title {
+    align-self: center;
     max-width: fit-content;
   }
   .article-info {
@@ -161,11 +186,7 @@ nav ul {
   }
 
   .comments {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .comment {
-    flex: 1 1 30%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   }
 }

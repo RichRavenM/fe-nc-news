@@ -30,3 +30,14 @@ export const patchArticleVotes = (id, num) => {
     { inc_votes: num }
   );
 };
+
+export const postCommentByArticleId = (id, user, body) => {
+  return axios
+    .post(`https://nc-news-api-rich.onrender.com/api/articles/${id}/comments`, {
+      username: user,
+      body,
+    })
+    .then((response) => {
+      return response.data.comment;
+    });
+};

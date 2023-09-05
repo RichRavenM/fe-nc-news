@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getArticles } from "../../../api";
-import ArticleButton from "./ArticleButton";
+import { Link } from "react-router-dom";
 
 const Articles = () => {
   const [total, setTotal] = useState(0);
@@ -46,7 +46,12 @@ const Articles = () => {
               key={article.article_id}
               className="article"
             >
-              <h2 className="article-title">{article.title}</h2>
+              <Link
+                to={`/articles/${article.article_id}`}
+                className="article-title"
+              >
+                <h2>{article.title}</h2>
+              </Link>
               <h4>
                 {article.topic.slice(0, 1).toUpperCase() +
                   article.topic.slice(1)}
