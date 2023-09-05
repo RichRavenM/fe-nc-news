@@ -231,10 +231,6 @@ nav ul {
     border: 0;
   }
 
-  .comments {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
-  }
 
   .delete-button-container {
     grid-column: 1/3;
@@ -243,5 +239,11 @@ nav ul {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+  }
+
+  .comment-author {
+    align-self:last baseline;
+    justify-self: left;
+    padding-left: 20%;
   }
 }
