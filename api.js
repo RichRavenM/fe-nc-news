@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getArticles = (sortByTopic, sortByX, sortByOrder) => {
+export const getArticles = (sortByTopic = undefined, sortByX, sortByOrder) => {
   return axios
     .get("https://nc-news-api-rich.onrender.com/api/articles", {
       params: {
