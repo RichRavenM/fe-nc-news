@@ -9,7 +9,6 @@ const MakeComment = ({ article_id, comments, setComments }) => {
   const [isValidAfterInput, setIsValidAfterInput] = useState("");
   const [isSubmitError, setIsSubmitError] = useState(false);
   const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const validateForm = (input) => {
     if (input.length > 9) {
@@ -28,24 +27,26 @@ const MakeComment = ({ article_id, comments, setComments }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsLoading(true);
+    const copyComments = [...comments];
     setIsSubmitError(false);
-    postCommentByArticleId(article_id, user, formInput)
-      .then((data) => {
-        setComments((currComments) => {
-          return [data, ...currComments];
-        });
-        setIsLoading(false);
-        setFormInput("");
-        setIsSubmitSuccess(true);
-      })
-      .catch((err) => {
-        setIsSubmitError(true);
-        setIsLoading(false);
-      });
+    const currentDate = new Date().toJSON().slice(0, 10);
+    const newComment = {
+      comment_id: 1000,
+      author: user,
+      body: formInput,
+      created_at: currentDate,
+    };
+    setComments((currComments) => {
+      return [newComment, ...currComments];
+    });
+    setFormInput("");
+    setIsSubmitSuccess(true);
+    postCommentByArticleId(article_id, user, formInput).catch((err) => {
+      setComments(copyComments);
+      setIsSubmitSuccess(false);
+      setIsSubmitError(true);
+    });
   };
-
-  if (isLoading) return <h3>Loading...</h3>;
 
   return (
     <div className="comment-form">
