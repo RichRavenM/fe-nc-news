@@ -12,10 +12,10 @@ const Articles = () => {
   const [isVoteError, setIsVoteError] = useState(null);
   const copyParams = { ...searchParams };
   const sortByTopic = searchParams.get("topic");
+  const sortByX = searchParams.get("sort_by");
+  const sortByOrder = searchParams.get("order");
 
   useEffect(() => {
-    const sortByX = searchParams.get("sort_by");
-    const sortByOrder = searchParams.get("order");
     setIsLoading(true);
     getArticles(sortByTopic, sortByX, sortByOrder)
       .then(({ articles, total_count }) => {
@@ -52,6 +52,8 @@ const Articles = () => {
         copyParams={copyParams}
         sortByTopic={sortByTopic}
         setSearchParams={setSearchParams}
+        sortByOrder={sortByOrder}
+        sortByX={sortByX}
       />
       <h3>Total articles: {total}</h3>
       <ul className="articles-container">

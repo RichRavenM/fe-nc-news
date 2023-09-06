@@ -201,6 +201,12 @@ nav ul {
   font-size: 20px;
 }
 
+.filter-buttons {
+  display: flex;
+  flex-direction: column;
+
+}
+
 @media only screen and (min-width: 600px) {
   #root {
     font-size: 20px;

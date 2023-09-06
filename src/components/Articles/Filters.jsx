@@ -1,9 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Filters = ({ copyParams, sortByTopic, setSearchParams }) => {
+const Filters = ({
+  copyParams,
+  sortByTopic,
+  setSearchParams,
+  sortByOrder,
+  sortByX,
+}) => {
   const [sortBy, setSortBy] = useState(undefined);
   const [order, setOrder] = useState(undefined);
   const [isHidden, setisHidden] = useState(true);
+
+  const navigate = useNavigate();
 
   const handleSortChange = (event) => {
     if (event.target.value !== "None") {
@@ -48,8 +57,9 @@ const Filters = ({ copyParams, sortByTopic, setSearchParams }) => {
           setisHidden(!isHidden);
         }}
       >
-        {isHidden ? 'Show filters': 'Hide filters'}
+        {isHidden ? "Show filters" : "Hide filters"}
       </button>
+
       <form className="filter-form" hidden={isHidden} onSubmit={handleSubmit}>
         <div>
           <label className="filter-label" htmlFor="sort_by">
@@ -88,8 +98,23 @@ const Filters = ({ copyParams, sortByTopic, setSearchParams }) => {
             </select>
           </label>
         </div>
-        <button disabled={!order && !sortBy}>Apply filters!</button>
+        <button id="filter-button" disabled={!order && !sortBy}>
+          Apply filters!
+        </button>
       </form>
+
+      {sortByTopic || sortByX || sortByOrder ? (
+        <>
+          <br></br>
+          <button
+            onClick={() => {
+              navigate("/articles");
+            }}
+          >
+            Reset filters
+          </button>
+        </>
+      ) : null}
     </section>
   );
 };
