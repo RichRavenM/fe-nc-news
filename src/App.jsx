@@ -7,6 +7,7 @@ import Articles from "./components/Articles/Articles";
 import SingleArticle from "./components/Articles/SingleArticle/SingleArticle";
 import Topics from "./components/Topics";
 import PageNotFound from "./components/PageNotFound";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/topics" element={<Topics />}></Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

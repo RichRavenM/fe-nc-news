@@ -58,36 +58,40 @@ const Comments = ({ article_id }) => {
       />
       <h2>Comments</h2>
       <ul className="comments">
-        {comments.map((comment) => {
-          return (
-            <li className="comment" key={comment.comment_id}>
-              <p className="comment-body">{comment.body}</p>
-              <h3 className="comment-author">{comment.author}</h3>
-              <div className="comment-info">
-                <p className="comment-creation">
-                  {comment.created_at.slice(0, 10)}
-                </p>
-                <p className="comment-votes">Votes: {comment.votes}</p>
-              </div>
-              <div className="delete-button-container">
-                <button
-                  disabled={comment.author !== user}
-                  className="delete-button"
-                  onClick={() => {
-                    handleDelete(comment);
-                  }}
-                >
-                  Delete Comment
-                </button>
-                {isDeleteError && commentById === comment.comment_id ? (
-                  <p className="comment-delete-error">
-                    Please refesh the page and try again
+        {comments.length > 0 ? (
+          comments.map((comment) => {
+            return (
+              <li className="comment" key={comment.comment_id}>
+                <p className="comment-body">{comment.body}</p>
+                <h3 className="comment-author">{comment.author}</h3>
+                <div className="comment-info">
+                  <p className="comment-creation">
+                    {comment.created_at.slice(0, 10)}
                   </p>
-                ) : null}
-              </div>
-            </li>
-          );
-        })}
+                  <p className="comment-votes">Votes: {comment.votes}</p>
+                </div>
+                <div className="delete-button-container">
+                  <button
+                    disabled={comment.author !== user}
+                    className="delete-button"
+                    onClick={() => {
+                      handleDelete(comment);
+                    }}
+                  >
+                    Delete Comment
+                  </button>
+                  {isDeleteError && commentById === comment.comment_id ? (
+                    <p className="comment-delete-error">
+                      Please refesh the page and try again
+                    </p>
+                  ) : null}
+                </div>
+              </li>
+            );
+          })
+        ) : (
+          <h2>No comments at this time</h2>
+        )}
       </ul>
     </>
   );

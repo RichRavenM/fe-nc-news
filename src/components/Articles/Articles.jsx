@@ -9,7 +9,6 @@ const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isVoteError, setIsVoteError] = useState(null);
   const copyParams = { ...searchParams };
   const sortByTopic = searchParams.get("topic");
   const sortByX = searchParams.get("sort_by");
@@ -30,7 +29,16 @@ const Articles = () => {
       });
   }, [searchParams]);
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading)
+    return (
+      <>
+        <div className="modal-box">
+          <div className="modal-content">
+            <h1>Loading...</h1>
+          </div>
+        </div>
+      </>
+    );
   if (isError)
     return (
       <>

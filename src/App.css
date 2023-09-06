@@ -4,6 +4,13 @@
   text-align: center;
   width: 100%;
   height: 100%;
+  padding-bottom: 0;
+}
+
+.Footer {
+  background-color: red;
+  color: black;
+  margin-bottom: 0;
 }
 
 #homepic {
@@ -178,6 +185,10 @@ nav ul {
   border: 1px solid black;
 }
 
+.article:hover {
+  box-shadow: 0 0 0 10px red;
+}
+
 .topic-description {
   font-style: italic;
 }
@@ -204,13 +215,83 @@ nav ul {
 .filter-buttons {
   display: flex;
   flex-direction: column;
+}
 
+.modal-box {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-list.not-open {
+    display: none;
+  }
+
+  .Nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex;
+  }
+
+  .nav-list li {
+    background-color: red;
+    margin: 10px;
+    padding: 10px 30px;
+  }
+
+  .nav-list li a {
+    color: white;
+  }
+  .nav-list li a:hover {
+    color: blue;
+  }
 }
 
 @media only screen and (min-width: 600px) {
   #root {
     font-size: 20px;
   }
+
+  .nav-header {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    justify-content: space-around;
+    background-color: red;
+    padding: 10px 0px;
+  }
+
+  .nav-list li a {
+    color: white;
+  }
+
+  .nav-list li a:hover {
+    color: blue;
+  }
+
   .filter-select {
     font-size: 20px;
     margin-top: 3%;

@@ -21,7 +21,16 @@ const Topics = () => {
       });
   }, []);
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading)
+    return (
+      <>
+        <div className="modal-box">
+          <div className="modal-content">
+            <h1>Loading...</h1>
+          </div>
+        </div>
+      </>
+    );
   if (isError) return <h1>Error. Please try again</h1>;
 
   return (

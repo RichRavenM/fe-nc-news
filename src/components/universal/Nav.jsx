@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen((open) => !open);
+  };
   return (
-    <nav>
-      <h2>Nav</h2>
-      <ul>
+    <nav className="Nav">
+      <button className="nav-header" onClick={handleClick}>
+        Navigation menu
+      </button>
+      <ul className={`nav-list ${isOpen ? "is-open" : "not-open"}`}>
         <li>
           <Link to="/">Home</Link>
         </li>
