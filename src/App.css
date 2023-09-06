@@ -41,7 +41,7 @@ nav ul {
   margin-bottom: 0px;
   align-self: center;
   max-width: 400px;
-  color: #213547;
+  
 }
 
 .article-title:hover {
@@ -140,6 +140,7 @@ nav ul {
   height: 200px;
   font-size: 1.5em;
   resize: none;
+  outline: 1px solid black;
 }
 
 #comment-form-input.comment-form-invalid {
@@ -193,9 +194,7 @@ nav ul {
   font-style: italic;
 }
 
-.topic-slug {
-  color: #213547;
-}
+
 
 .topic-slug:hover {
   color: purple;

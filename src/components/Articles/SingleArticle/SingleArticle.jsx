@@ -24,15 +24,16 @@ const SingleArticle = () => {
       });
   }, []);
 
-  if (isLoading) return (
-    <>
-      <div className="modal-box">
-        <div className="modal-content">
-          <h1>Loading...</h1>
+  if (isLoading)
+    return (
+      <>
+        <div className="modal-box">
+          <div className="modal-content">
+            <h1 className="modal-h1">Loading...</h1>
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
 
   if (isError)
     return (
