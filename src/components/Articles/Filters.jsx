@@ -62,7 +62,7 @@ const Filters = ({
 
       <form className="filter-form" hidden={isHidden} onSubmit={handleSubmit}>
         <div>
-          <label className="filter-label" htmlFor="sort_by">
+          <label id="sort" className="filter-label" htmlFor="sort_by">
             Sort by
             <select
               className="filter-select"
@@ -81,7 +81,7 @@ const Filters = ({
           </label>
         </div>
         <div>
-          <label className="filter-label" htmlFor="order">
+          <label id="order-label" className="filter-label" htmlFor="order">
             Order
             <select
               className="filter-select"

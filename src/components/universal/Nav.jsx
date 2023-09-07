@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../Contexts/UserContext";
 
 const Nav = () => {
+  const {user} = useContext(UserContext)
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
     setIsOpen((open) => !open);
   };
   return (
     <nav className="Nav">
+      <p id='user'>You are logged in as {user}</p>
       <button className="nav-header" onClick={handleClick}>
         Navigation menu
       </button>
