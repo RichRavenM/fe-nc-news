@@ -275,7 +275,7 @@ p.article-title {
   padding-right: 3px;
 }
 
-@media only screen and (min-width: 600px) and (max-width: 750px) {
+@media only screen and (min-width: 600px) and (max-width: 800px) {
   .article-img {
     max-width: 500px;
   }
