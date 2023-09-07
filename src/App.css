@@ -275,9 +275,13 @@ p.article-title {
   padding-right: 3px;
 }
 
-@media only screen and (min-width: 600px) and (max-width: 720px) {
+@media only screen and (min-width: 600px) and (max-width: 750px) {
   .article-img {
     max-width: 500px;
+  }
+  #user {
+    max-width: 60%;
+    margin-top: 0;
   }
 }
 
