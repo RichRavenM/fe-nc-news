@@ -40,10 +40,15 @@ const ArticleButton = ({ article, setIsVoteError, setArticle }) => {
           }
         }}
       >
-        Like
+        Like <br></br>
+        <img
+          className="thumbs"
+          src="https://cdn-icons-png.flaticon.com/512/2415/2415418.png"
+          alt="thumb-up"
+        ></img>
       </button>
       <button
-        className={isDislikeClicked ? "clicked-dislike" : null}
+        className={`${isDislikeClicked ? "clicked-dislike" : null} like`}
         disabled={isLikeClicked}
         onClick={() => {
           if (isDislikeClicked) {
@@ -53,7 +58,11 @@ const ArticleButton = ({ article, setIsVoteError, setArticle }) => {
           }
         }}
       >
-        Dislike
+        Dislike <br></br>
+        <img
+          className="thumbs"
+          src="https://cdn-icons-png.flaticon.com/512/1633/1633636.png"
+        ></img>
       </button>
     </div>
   );

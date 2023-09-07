@@ -50,14 +50,14 @@ const Topics = () => {
       <ul className="topics-list">
         {topics.map((topic) => {
           return (
-            <li className="topic-ele" key={topic.slug}>
-              <Link to={`/articles?topic=${topic.slug}`}>
+            <Link to={`/articles?topic=${topic.slug}`}>
+              <li className="topic-ele" key={topic.slug}>
                 <h3 className="topic-slug">
                   {topic.slug.slice(0, 1).toUpperCase() + topic.slug.slice(1)}
                 </h3>
-              </Link>
-              <p className="topic-description">{topic.description}</p>
-            </li>
+                <p className="topic-description">{topic.description}</p>
+              </li>
+            </Link>
           );
         })}
       </ul>

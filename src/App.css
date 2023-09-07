@@ -1,5 +1,3 @@
-
-
 #root {
   margin: 0 auto;
   padding: 2rem;
@@ -139,8 +137,20 @@ p.article-title {
   background-color: green;
 }
 
+.clicked-like:hover {
+  background-color: green;
+}
+
 .clicked-dislike {
   background-color: red;
+}
+
+.clicked-dislike:hover {
+  background-color: red;
+}
+
+.thumbs {
+  height: 20px;
 }
 
 #comment-form-input {
@@ -187,15 +197,31 @@ p.article-title {
 }
 
 .topic-ele {
-  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.topic-ele:hover {
+  transform: scale(1.1, 1.1);
+  transition: all 0.6s ease-out;
+  box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.3);
+}
+
+.topic-slug {
+  color: black;
+  background-color: red;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .topic-description {
   font-style: italic;
-}
-
-.topic-slug:hover {
-  color: purple;
+  background-color: gray;
+  margin: 0;
+  color: white;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .filter-select {
@@ -245,8 +271,6 @@ p.article-title {
   padding-left: 3px;
   padding-right: 3px;
 }
-
-
 
 @media only screen and (max-width: 600px) {
   .nav-list.not-open {
@@ -389,5 +413,12 @@ p.article-title {
     align-self: last baseline;
     justify-self: left;
     padding-left: 20%;
+  }
+
+  .topics-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 400px);
+    justify-content: center;
+    grid-gap: 10px;
   }
 }
