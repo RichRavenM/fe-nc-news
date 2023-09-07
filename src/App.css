@@ -103,7 +103,6 @@ p.article-title {
 .comments {
   list-style-type: none;
   padding-left: 0;
-  border: 1px solid black;
 }
 
 .comment {
@@ -151,6 +150,10 @@ p.article-title {
 
 .thumbs {
   height: 20px;
+}
+
+.comment-form {
+  margin-bottom: 100px;
 }
 
 #comment-form-input {
@@ -272,16 +275,23 @@ p.article-title {
   padding-right: 3px;
 }
 
+@media only screen and (min-width: 600px) and (max-width: 720px) {
+  .article-img {
+    max-width: 500px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .nav-list.not-open {
     display: none;
   }
 
   .header-nav .Head {
-    background-color: rgba(255, 0, 0, 0.766);
+    background-color: red;
     padding-bottom: 10px;
     padding-top: 10px;
     margin-bottom: 20px;
+    color: black;
   }
 
   #user {
@@ -311,6 +321,10 @@ p.article-title {
   }
   .nav-list li a:hover {
     color: blue;
+  }
+
+  .article-img {
+    max-width: 300px;
   }
 }
 
