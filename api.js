@@ -15,6 +15,20 @@ export const getArticles = (sortByTopic = undefined, sortByX, sortByOrder) => {
     });
 };
 
+export const postArticle = (author, topic, title, body, article_img_url) => {
+  return axios
+    .post("https://nc-news-api-rich.onrender.com/api/articles", {
+      author,
+      topic,
+      title,
+      body,
+      article_img_url,
+    })
+    .then((response) => {
+      return response.data.article;
+    });
+};
+
 export const getArticleById = (id) => {
   return axios
     .get(`https://nc-news-api-rich.onrender.com/api/articles/${id}`)

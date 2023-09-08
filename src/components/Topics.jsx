@@ -1,25 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { getTopics } from "../../api";
+import { TopicsContext } from "../Contexts/TopicsContext";
 
 const Topics = () => {
-  const [topics, setTopics] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    setIsError(false);
-    setIsLoading(true);
-    getTopics()
-      .then((data) => {
-        setTopics(data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setIsError(true);
-        setIsLoading(false);
-      });
-  }, []);
+  const { topics, isError, isLoading } = useContext(TopicsContext);
 
   if (isLoading)
     return (

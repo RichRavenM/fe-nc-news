@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { getArticles } from "../../../api";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import Filters from "./Filters";
 import Pages from "./Pages";
+import AddArticle from "./AddArticle";
 
 const Articles = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [total, setTotal] = useState(0);
   const [articles, setArticles] = useState([]);
@@ -69,6 +71,11 @@ const Articles = () => {
         sortByOrder={sortByOrder}
         sortByX={sortByX}
       />
+      <button
+        onClick={() => {
+          navigate("/articles/post");
+        }}
+      >Post your own article</button>
       <h3>Total articles: {total}</h3>
       <Pages pageTotal={pageTotal} page={page} setPage={setPage} />
       <ul className="articles-container">
