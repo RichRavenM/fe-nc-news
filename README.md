@@ -19,7 +19,7 @@ https://github.com/RichRavenM/RichM-nc-news/
  <br>
 
  <h2 style='text-align:center;'>About the Website</h2>
- <p>The website has several components. Globally, there will always be a Header and a Nav bar. From there, pages are split into the Home page, Article page, Article Topics page, and individual Article pages. There are front-end protocols for loading times and errors. The website is <strong>fully responsive</strong> to various device sizes.</p>
+ <p>The website has several components. Globally, there will always be a Header and a Nav bar. From there, pages are split into the Home page, Article page, Add Article page, Article Topics page, and individual Article pages. There are front-end protocols for loading times and errors. The website is <strong>fully responsive</strong> to various device sizes.</p>
 
  <p>It should be noted that you will hardcoded in as the user <strong>tickle122</strong></p>
 
@@ -29,6 +29,9 @@ https://github.com/RichRavenM/RichM-nc-news/
 
  <h3>Articles page</h3>
  <p>Here you can view all the articles, including their authors, dates of creation, and vote and comment counts. There is an additional component, Filters, that allows you to apply sorting criteria. Additionally, you can click on a topic to filter by that topic. With any filters applied, you have the option to reset the filters.</p>
+
+ <h3>Add Article page</h3>
+ <p>Here you can submit your own article. The website ensures you meet all the necessary criteria so that there are no errors when submitting an article.
 
  <h3>Article Topics Page</h3>
  <p>This page provides you with links to the articles, filtered by topic, as well as a brief description of each topic.</p>
